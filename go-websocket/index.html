@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="center">
+        <h1>Amazing Chat Application</h1>
+    </div>
+
+    <script>
+        let socket = new WebSocket("ws://localhost:8080/ws");
+        console.log("Attempting WebSocket Connection");
+
+        socket.onopen = () => {
+            console.log("Successfully connected");
+            socket.send("Hi from Client");
+        }
+
+        socket.onclose = (event) => {
+            console.log("Socket Closed Connection: " + event);
+        }
+
+        socket.onerror = (error) => {
+            console.log("Socket Error: " + error);
+        }
+
+        socket.onmessage = (msg) => {
+            console.log("Message from server: " + msg.data);
+        }
+    </script>
+</body>
+</html>
