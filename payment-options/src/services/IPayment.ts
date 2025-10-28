@@ -1,8 +1,8 @@
-interface IPayment {
+export interface IPayment {
     debit(): void;
 }
 
-enum PaymentType {
+export enum PaymentType {
     CARD = "CARD",
     UPI = "UPI"
 }
